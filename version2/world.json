@@ -1,0 +1,45 @@
+{
+  "rooms": [
+    {
+      "name": "Entrance Hall",
+      "description": "A grand hall with marble floors and a large wooden door to the north.",
+      "objects": [
+        {
+          "name": "door",
+          "allowed_verbs": ["open", "close", "lock", "unlock"],
+          "allowed_prepositions": ["to", "with"],
+          "can_be_picked_up": false,
+          "state": "closed"
+        },
+        {
+          "name": "key",
+          "allowed_verbs": ["pick", "use"],
+          "allowed_prepositions": ["with"],
+          "can_be_picked_up": true,
+          "state": "shiny"
+        }
+      ]
+    },
+    {
+      "name": "Library",
+      "description": "A quiet room filled with shelves of old books and a reading desk.",
+      "objects": [
+        {
+          "name": "book",
+          "allowed_verbs": ["read", "pick"],
+          "allowed_prepositions": ["on"],
+          "can_be_picked_up": true,
+          "state": "closed"
+        },
+        {
+          "name": "lamp",
+          "allowed_verbs": ["turn on", "turn off"],
+          "allowed_prepositions": ["on"],
+          "can_be_picked_up": false,
+          "state": "off"
+        }
+      ]
+    }
+  ]
+}
+
