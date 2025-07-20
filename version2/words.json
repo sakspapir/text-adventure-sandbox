@@ -1,6 +1,27 @@
 {
-  "verbs": ["eat", "move", "open", "walk to", "take", "pick up"],
-  "objects": ["door", "apple", "box", "tiny little spoon", "old chair"],
-  "prepositions": ["to", "with", "on"]
+  "verbs": [
+            "turn on",
+            "eat", 
+            "move", 
+            "open", 
+            "walk to", 
+            "take", 
+            "pick up",
+            "use"
+            ],
+  "objects": [
+            "lamp",
+            "key",
+            "door", 
+            "apple", 
+            "box", 
+            "tiny little spoon", 
+            "old chair"
+            ],
+  "prepositions": [
+            "to", 
+            "with", 
+            "on"
+            ]
 }
 

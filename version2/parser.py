@@ -23,8 +23,33 @@ class Parser:
         return "unknown sentence"
 
     def tokenize(self, sentence):
-        return sentence.strip().lower().split()
+        sentence = sentence.strip().lower()
+        tokens = []
+        words = sentence.split()
+        i = 0
 
+        # Combine all known tokens into a list with their type
+        known_tokens = [(verb, 'verb') for verb in self.verbs] + \
+                       [(obj, 'object') for obj in self.objects] + \
+                       [(prep, 'preposition') for prep in self.prepositions]
+
+        # Sort known tokens by length (descending) to match longest first
+        known_tokens.sort(key=lambda x: len(x[0].split()), reverse=True)
+
+        while i < len(words):
+            matched = False
+            for token, _ in known_tokens:
+                token_words = token.split()
+                if words[i:i+len(token_words)] == token_words:
+                    tokens.append(token)
+                    i += len(token_words)
+                    matched = True
+                    break
+            if not matched:
+                tokens.append(words[i])
+                i += 1
+
+        return tokens
 
     def add_pattern(self, label, regex):
         self.patterns.insert(0, (label, re.compile(regex)))
