@@ -1,3 +1,5 @@
+from event import Event
+
 class Interpreter:
     _instance = None
 
@@ -8,14 +10,9 @@ class Interpreter:
         return cls._instance
 
     def _initialize(self):
-        pass  # No initialization needed for now
+        self.event_handler = Event()
 
     def evaluate(self, sentence_structure, words, player):
-        """
-        sentence_structure: str - one of the recognized sentence types
-        words: list - tokenized words from the sentence
-        player: Player instance
-        """
         room = player.get_current_room()
         inventory = player.inventory
 
@@ -29,7 +26,7 @@ class Interpreter:
             verb, obj_name = words
             obj = find_object(obj_name)
             if obj and verb in obj.allowed_verbs:
-                print("Event generated")
+                self.event_handler.check_for_events(obj, obj, verb, "")
             else:
                 print("Invalid action")
 
@@ -40,13 +37,13 @@ class Interpreter:
             if (obj1 and obj2 and
                 verb in obj1.allowed_verbs and
                 prep in obj2.allowed_prepositions):
-                print("Event generated")
+                self.event_handler.check_for_events(obj1, obj2, verb, prep)
             else:
                 print("Invalid action")
 
         elif sentence_structure == "verb":
             verb = words[0]
-            print("Event generated")  # Assuming single verbs are always valid for now
+            #print("Event generated")  # Placeholder for verb-only events
 
         else:
             print("Unknown sentence structure")
