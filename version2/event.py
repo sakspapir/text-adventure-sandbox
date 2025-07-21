@@ -1,3 +1,5 @@
+from player import protagonist
+
 class Event:
     _instance = None
 
@@ -8,21 +10,25 @@ class Event:
         return cls._instance
 
     def _initialize(self):
-        pass  # Placeholder for any future initialization
+        pass        
 
     def check_for_events(self, obj1, obj2, verb, preposition):
-        """
-        Check if an event should be triggered based on the interaction between two GameObjects,
-        a verb, and a preposition.
+        unlock_door_in_entrance_hall(obj1,obj2,verb,preposition)
 
-        Parameters:
-        - obj1: GameObject
-        - obj2: GameObject
-        - verb: str
-        - preposition: str
-        """
-        if verb in obj1.allowed_verbs and preposition in obj2.allowed_prepositions:
-            print("Event generated")
+
+
+# EVENT FUNCTIONS
+
+def unlock_door_in_entrance_hall(obj1, obj2, verb, preposition):
+    if protagonist.get_current_room().name != "Entrance Hall":
+        return
+    if obj1.name == "key" and obj2.name == "door" and verb == "use" and preposition == "with":
+        if protagonist.is_in_inventory(obj1) == False:
+            print("You don't have a key")
+            return
+        if obj2.state == "locked":
+            obj2.state = "closed"
+            print("The door is now unlocked.")
         else:
-            print("No event triggered")
+            print("The door is not locked.")
 

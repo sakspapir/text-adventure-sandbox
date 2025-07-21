@@ -1,4 +1,5 @@
 from event import Event
+from player import protagonist
 
 class Interpreter:
     _instance = None
@@ -12,9 +13,9 @@ class Interpreter:
     def _initialize(self):
         self.event_handler = Event()
 
-    def evaluate(self, sentence_structure, words, player):
-        room = player.get_current_room()
-        inventory = player.inventory
+    def evaluate(self, sentence_structure, words):
+        room = protagonist.get_current_room()
+        inventory = protagonist.inventory
 
         def find_object(name):
             for obj in room.objects + inventory:

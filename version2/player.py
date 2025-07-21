@@ -26,3 +26,8 @@ class Player:
     def list_inventory(self):
         return [obj.name for obj in self.inventory]
 
+    def is_in_inventory(self, obj):
+        return obj in self.inventory
+
+
+protagonist = Player()
