@@ -27,7 +27,7 @@ class Interpreter:
             verb, obj_name = words
             obj = find_object(obj_name)
             if obj and verb in obj.allowed_verbs:
-                self.event_handler.check_for_events(obj, obj, verb, "")
+                self.event_handler.check_for_events(obj, obj, verb, "", sentence_structure)
             else:
                 print("Invalid action")
 
@@ -38,7 +38,7 @@ class Interpreter:
             if (obj1 and obj2 and
                 verb in obj1.allowed_verbs and
                 prep in obj2.allowed_prepositions):
-                self.event_handler.check_for_events(obj1, obj2, verb, prep)
+                self.event_handler.check_for_events(obj1, obj2, verb, prep, sentence_structure)
             else:
                 print("Invalid action")
 

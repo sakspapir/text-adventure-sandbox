@@ -26,6 +26,8 @@ sentences = [
     "open door",
     "pick up key",
     "use key with door",
+    "pick up key",
+    "use key on door",
     "read book",
     "turn on lamp",
     "fly away"

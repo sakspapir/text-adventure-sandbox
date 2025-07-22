@@ -7,9 +7,9 @@
         {
           "name": "door",
           "allowed_verbs": ["open", "close", "lock", "unlock"],
-          "allowed_prepositions": ["to", "with"],
+          "allowed_prepositions": ["to", "with", "on"],
           "can_be_picked_up": false,
-          "state": "closed"
+          "state": "locked"
         },
         {
           "name": "key",
